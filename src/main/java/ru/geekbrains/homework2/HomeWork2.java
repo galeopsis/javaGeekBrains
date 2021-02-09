@@ -1,9 +1,7 @@
-package geekbrains;
+package ru.geekbrains.homework2;
 
-class HomeWork2 {
+public class HomeWork2 {
     public static void main(String[] args) {
-
-//
         int c = 1;
         float e = 3.2f;
         c++;
@@ -14,5 +12,4 @@ class HomeWork2 {
         System.out.println(e);
         System.out.println(555);
     }
-
 }

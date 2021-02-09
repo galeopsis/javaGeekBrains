@@ -54,13 +54,12 @@ public class HomeWork1 {
     }
 
     public static boolean isNegative(int i) {
-        /*int number = i;
+        /* int number = i;
         if (number >= 0) {
             return false;
         } else {
             return true;
-        }*/
-        //именения
+        } */
             return i < 0;
         }
 
