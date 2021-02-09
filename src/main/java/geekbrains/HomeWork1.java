@@ -28,7 +28,7 @@ public class HomeWork1 {
 
 
         //Task #6
-        System.out.println(isNegative(-55));
+        System.out.println(isNegative(-10));
 
         //Task #7
         Scanner in = new Scanner(System.in);
@@ -54,13 +54,16 @@ public class HomeWork1 {
     }
 
     public static boolean isNegative(int i) {
-        int number = i;
+        /*int number = i;
         if (number >= 0) {
             return false;
         } else {
             return true;
+        }*/
+
+            return i < 0;
         }
-    }
+
 
     public static String result(int r) {
         String result;
