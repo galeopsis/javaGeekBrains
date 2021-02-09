@@ -1,5 +1,5 @@
 package ru.geekbrains.homework2;
-
+//test
 public class HomeWork2 {
     public static void main(String[] args) {
         int c = 1;
