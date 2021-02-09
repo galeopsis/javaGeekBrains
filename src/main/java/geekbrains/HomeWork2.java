@@ -3,7 +3,7 @@ package geekbrains;
 class HomeWork2 {
     public static void main(String[] args) {
 
-
+//
         int c = 1;
         float e = 3.2f;
         c++;

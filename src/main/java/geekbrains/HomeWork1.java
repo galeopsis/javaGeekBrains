@@ -60,7 +60,7 @@ public class HomeWork1 {
         } else {
             return true;
         }*/
-
+        //именения
             return i < 0;
         }
 
