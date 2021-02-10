@@ -1,15 +1,16 @@
 package ru.geekbrains.homework2;
-//test
+
 public class HomeWork2 {
+
     public static void main(String[] args) {
-        int c = 1;
-        float e = 3.2f;
-        c++;
-        System.out.println(c);
-        ++c;
-        System.out.println(c);
-        System.out.println(c);
-        System.out.println(e);
-        System.out.println(555);
+        test(-45654);
+        test(654);
+        test(-54);
+        test(-45654);
+    }
+
+    private static void test(int i) {
+        String word = (i > 0) ? ("положительное!") : ("отрицательное!");
+        System.out.printf("Число %d %s %n", i, word);
     }
 }
