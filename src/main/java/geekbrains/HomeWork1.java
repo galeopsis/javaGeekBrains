@@ -1,7 +1,5 @@
 package geekbrains;
-
 import java.util.Scanner;
-
 public class HomeWork1 {
 
     //Task #1
