@@ -1,7 +1,5 @@
 package geekbrains;
-
 import java.util.Scanner;
-
 public class HomeWork1 {
 
     //Task #1
@@ -24,11 +22,15 @@ public class HomeWork1 {
         System.out.println(summ (1, 21));
 
         //Task #5
-        System.out.println(result(48));
+        //System.out.println(result(48));
+        result(-654);
+        result(312);
+        result(-848);
+
 
 
         //Task #6
-        System.out.println(isNegative(-10));
+        System.out.println(isNegative(10));
 
         //Task #7
         Scanner in = new Scanner(System.in);
@@ -45,12 +47,14 @@ public class HomeWork1 {
     }
 
     public static boolean summ(int a, int b) {
-        int result = a + b;
+        /*int result = a + b;
         if (result > 10 && result < 20) {
             return true;
         } else {
             return false;
-        }
+        }*/
+        return (a + b >= 10) && (a + b <= 20);
+
     }
 
     public static boolean isNegative(int i) {
@@ -64,15 +68,17 @@ public class HomeWork1 {
         }
 
 
-    public static String result(int r) {
-        String result;
+    public static void result(int r) {
+        /*String result;
         if (r >= 0) {
             result = "Ваше число положительное!";
             return result;
         } else {
             result = "Ваше число отрицательное!";
             return result;
-        }
+        }*/
+        String word = (r > 0) ? ("положительное!") : ("отрицательное!");
+        System.out.printf("Число %d %s %n", r, word);
     }
     public static String isLeapYear(int y) {
         String isLeapYear;
