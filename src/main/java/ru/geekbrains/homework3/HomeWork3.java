@@ -16,13 +16,8 @@ public class HomeWork3 {
 
         while (true) {
             if (attempts == 0) {
-                System.out.print("Вы проиграли! ");
-                System.out.print("Хотите сыграть снова? 1 = Да, Любое другое число = Нет ");
-                if (in.nextInt() == 1) {
-                    secret = (int) (Math.random() * 10);
-                    System.out.println(secret);
-                    askSecret(secret);
-                }
+                System.out.print("Вы проиграли! Было загадано число: '" + secret + "' ");
+                AskForRestart(in);
                 break;
             }
             System.out.print("Угадайте число от 0 до 10: ");
@@ -30,13 +25,7 @@ public class HomeWork3 {
             attempts--;
             if (answer == secret) {
                 System.out.print("Поздравляю, Вы угадали! ");
-                System.out.print("Хотите сыграть снова? 1 = Да, Любое другое число = Нет ");
-                if (in.nextInt() == 1) {
-                    secret = (int) (Math.random() * 10);
-                    System.out.println(secret);
-                    askSecret(secret);
-                }
-                break;
+                AskForRestart(in);
             }
             if (answer < secret) {
                 System.out.println("Ваш ответ слишком маленький. ");
@@ -46,6 +35,17 @@ public class HomeWork3 {
                 break;
             }
         }
+    }
+
+    private static void AskForRestart(Scanner in) {
+        int secret;
+        System.out.print("Хотите сыграть снова? 1 = Да, Любое другое число = Нет ");
+        if (in.nextInt() == 1) {
+            secret = (int) (Math.random() * 10);
+            System.out.println(secret);
+            askSecret(secret);
+        }
+        return;
     }
 
 }

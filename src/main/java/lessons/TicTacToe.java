@@ -6,13 +6,21 @@ import java.util.Scanner;
 public class TicTacToe {
 
     static final int SIZE = 3;
+    static final int WIN_SIZE = 3;
+    static int col;
+    static int row;
+    static int diags;
+    static int sym_count = 0;
+    static int rowNumber;
+    static int columnNumber;
+
 
     static final char DOT_EMPTY = '•';
     static final char DOT_HUMAN = 'X';
     static final char DOT_AI = 'O';
 
     static final char HEADER_FIRST_SYMBOL = '♥';
-    static final String EMPTY = " ";
+    static final String EMPTY = "　";//длинный пробел код символа \u3000
 
     static final char[][] MAP = new char[SIZE][SIZE];
     static final Scanner in = new Scanner(System.in);
@@ -21,6 +29,7 @@ public class TicTacToe {
 
 
     public static void main(String[] args) {
+
         turnGame();
     }
 
@@ -64,6 +73,7 @@ public class TicTacToe {
     }
 
     private static void printMapNumber(int i) {
+
         System.out.print(i + 1 + EMPTY);
     }
 
@@ -94,8 +104,8 @@ public class TicTacToe {
     }
 
     private static void humanTurn() {
-        int rowNumber;
-        int columnNumber;
+      /*  int rowNumber;
+        int columnNumber;*/
         boolean isInputValid = true;
 
 
@@ -145,6 +155,7 @@ public class TicTacToe {
         return true;
     }
 
+
     private static boolean isNumbersValid(int rowNumber, int columnNumber) {
         return !(rowNumber >= SIZE || rowNumber < 0 || columnNumber >= SIZE || columnNumber < 0);
     }
@@ -156,7 +167,7 @@ public class TicTacToe {
 
     private static void checkEnd(char symbol) {
 
-        if (checkWin(symbol)) {
+        if (checkWin (symbol, rowNumber, columnNumber)) {
             if (symbol == DOT_HUMAN) {
                 System.out.println("Ура! Вы победили!");
             } else {
@@ -170,23 +181,74 @@ public class TicTacToe {
     }
 
     private static boolean isMapFull() {
+
         return turnsCount == SIZE * SIZE;
     }
 
-    private static boolean checkWin(char symbol) {
-        if (MAP[0][0] == symbol && MAP[0][1] == symbol && MAP[0][2] == symbol) return true;
-        if (MAP[1][0] == symbol && MAP[1][1] == symbol && MAP[1][2] == symbol) return true;
-        if (MAP[2][0] == symbol && MAP[2][1] == symbol && MAP[2][2] == symbol) return true;
+    private static boolean checkWin(char symbol, int row, int col) {
 
-        if (MAP[0][0] == symbol && MAP[1][0] == symbol && MAP[2][0] == symbol) return true;
-        if (MAP[0][1] == symbol && MAP[1][1] == symbol && MAP[2][1] == symbol) return true;
-        if (MAP[0][2] == symbol && MAP[1][2] == symbol && MAP[2][2] == symbol) return true;
+      return (checkRows(row, symbol) || checkCols(col, symbol) || checkDiags(symbol));
+    }
 
-        if (MAP[0][0] == symbol && MAP[1][1] == symbol && MAP[2][2] == symbol) return true;
-        if (MAP[0][2] == symbol && MAP[1][1] == symbol && MAP[2][0] == symbol) return true;
-
+    private static boolean checkRows(int row, char symbol) {
+        for (int j = 0; j < SIZE; j++) {
+            if (MAP[row][j] == symbol) {
+                sym_count++;
+                if (sym_count == WIN_SIZE) return true;
+            } else sym_count = 0;
+        }
+        sym_count = 0;
         return false;
     }
+
+    private static boolean checkCols(int col, char symbol) {
+        for (int i = 0; i < SIZE; i++) {
+            if (MAP[i][col] == symbol) {
+                sym_count++;
+                if (sym_count == WIN_SIZE) return true;
+            } else sym_count = 0;
+        }
+        sym_count = 0;
+        return false;
+    }
+
+   /* private static boolean checkDiags(char symbol) {
+        for (int i = 0; i < (SIZE-1); i++) {
+            for (int j = 0; j < (SIZE-1); j++) {
+                    if (MAP[i][j] == symbol) {
+                        sym_count++;
+                        if (sym_count == WIN_SIZE) return true;
+                    } else sym_count = 0;
+                }
+            }
+        sym_count = 0;
+        return false;
+    }*/
+
+/*      if(MAP[0][0]==symbol &&MAP[0][1]==symbol &&MAP[0][2]==symbol)return true;
+        if(MAP[1][0]==symbol &&MAP[1][1]==symbol &&MAP[1][2]==symbol)return true;
+        if(MAP[2][0]==symbol &&MAP[2][1]==symbol &&MAP[2][2]==symbol)return true;
+
+        if(MAP[0][0]==symbol &&MAP[1][0]==symbol &&MAP[2][0]==symbol)return true;
+        if(MAP[0][1]==symbol &&MAP[1][1]==symbol &&MAP[2][1]==symbol)return true;
+        if(MAP[0][2]==symbol &&MAP[1][2]==symbol &&MAP[2][2]==symbol)return true;
+              */
+private static boolean checkDiags(char symbol) {
+   /* for (int i = 0; i < (SIZE - 1); i++) {
+        for (int j = 0; j < (SIZE - 1); j++) {
+            if (MAP[i][j] == symbol) {
+                sym_count++;
+                if (sym_count == WIN_SIZE) return true;
+            } else sym_count = 0;
+        }
+    }*/
+
+
+    if (MAP[0][0] == symbol && MAP[1][1] == symbol && MAP[2][2] == symbol) return true;
+    if (MAP[0][2] == symbol && MAP[1][1] == symbol && MAP[2][0] == symbol) return true;
+//    sym_count = 0;
+    return false;
+}
 
     private static void turnAI() {
         int rowNumber;
